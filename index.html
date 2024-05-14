@@ -3,7 +3,6 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <style>
       h1 {
         color: brown;
@@ -11,10 +10,14 @@
     </style>
   </head>
   <body>
-    <h1>Hello World, this is a test.</h1>
     <button id="preview">Live Preview</button>
 
-    <iframe id="previewFrame" frameborder="0"></iframe>
+    <div id="domContent" style="display: none">
+      <h1>Hello World, this is a test.</h1>
+    </div>
+
+    <iframe id="previewFrame" frameborder="1"></iframe>
+
     <script src="preview.js"></script>
   </body>
 </html>

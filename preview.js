@@ -1,14 +1,16 @@
 const generatePreview = () => {
-  const content = `<html><body><p>yo</p></body></html>`;
-
   const previewFrame = document.getElementById("previewFrame");
 
-  function loadTemplate(template) {
-    previewFrame.srcdoc = template;
+  function loadTemplate() {
+    const domContent = document.getElementById("domContent").innerHTML;
+    const styles = document.querySelector("style").innerHTML;
+
+    const content = `<html><head><style>${styles}</style></head><body>${domContent}</body></html>`;
+    previewFrame.srcdoc = content;
   }
 
   document.getElementById("preview").addEventListener("click", function () {
-    loadTemplate(content);
+    loadTemplate();
   });
 };
 
