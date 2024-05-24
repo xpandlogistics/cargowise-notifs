@@ -88,19 +88,22 @@
         grid-area: 1 / 3 / 6 / 4;
       }
       .icon-container {
-        /* border: 2px solid purple; */
-        background: transparent;
-        border: transparent;
+        border: none; /* Remove border */
+        background: none; /* Remove background */
         height: fit-content;
-        padding: 3px;
+        display: inline-flex; /* Align the image properly within the button */
+        align-items: center; /* Center the image vertically */
+        justify-content: center; /* Center the image horizontally */
+        cursor: pointer; /* Add a pointer cursor for better UX */
+
+        padding: 10px 2px; /* Remove padding */
+        margin: 0.5em 0.5em 0px 0.5em;
+        flex: 0.1;
       }
       .icon-container:hover {
         background-color: #f4f4f4;
       }
       .icon-container img {
-        display: flex;
-        width: 30px;
-        transform: rotateY(180deg);
         transform: rotateX(180deg);
       }
 
