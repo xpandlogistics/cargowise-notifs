@@ -93,7 +93,30 @@
       iframe {
         /* border: 2px solid purple; */
         height: 100%;
-        width: 100%;
+      #previewButton {
+        background: var(--dark);
+        width: fit-content;
+        padding: 0.8em;
+        color: white;
+        font-size: 15px;
+        border-radius: var(--round);
+        cursor: pointer; /* Add a pointer cursor for better UX */
+      }
+
+      #previewButton:hover {
+        /* background: rgb(27 41 51 / 76%);
+        transition: ease 0.4s; */
+      }
+
+      #previewButton:focus {
+        /* Visible in the full-colour space */
+        box-shadow: 0px 0px 1px 1px var(--dark);
+        background: rgb(27 41 51 / 76%);
+        /* Visible in Windows high-contrast themes */
+        outline-color: transparent;
+        outline-width: 2px;
+        outline-style: dotted;
+      }
       }
       #template1 h1 {
         color: rgb(165, 42, 83);
