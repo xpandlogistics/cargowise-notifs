@@ -89,21 +89,20 @@
         background: var(--white);
       }
       .icon-container {
-        border: none; /* Remove border */
-        background: none; /* Remove background */
+        border: none;
+        background: none;
         height: fit-content;
-        display: inline-flex; /* Align the image properly within the button */
-        align-items: center; /* Center the image vertically */
-        justify-content: center; /* Center the image horizontally */
-        cursor: pointer; /* Add a pointer cursor for better UX */
-
-        padding: 10px 2px; /* Remove padding */
-        margin: 0.5em 0.5em 0px 0.5em;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 10px 0px;
+        margin: 1em 1em 0em 1em;
         flex: 0.1;
       }
       .icon-container:hover {
-        /* background-color: rgb(244, 244, 244); */
         background-color: var(--primary-color);
+        border-radius: var(--round);
       }
       .icon-container img {
         transform: rotateX(180deg);
