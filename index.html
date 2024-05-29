@@ -11,6 +11,7 @@
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" />
+    <title>CargoWise Email Preview</title>
     <style>
       /* --- Global Styles */
       :root {
@@ -201,10 +202,14 @@
       <div class="content-container">
         <div class="code_editor--container">
           <div class="code_editor">
-            <iframe id="previewCode"> </iframe>
+            <iframe id="previewCode" title="Code Snippet"> </iframe>
           </div>
-          <button class="icon-container" id="clipboard">
-            <img src="./assets/copy.png" width="30" />
+          <button
+            class="icon-container"
+            id="clipboard"
+            aria-labelledby="button-label">
+            <span id="button-label" hidden>Copy to Clipboard</span>
+            <img src="./assets/copy.png" width="35" alt="copy" />
           </button>
         </div>
 
@@ -213,7 +218,7 @@
         </div>
 
         <div class="iframe-container">
-          <iframe id="previewTemplate"> </iframe>
+          <iframe id="previewTemplate" title="Template Live Preview"> </iframe>
         </div>
 
         <div class="template" id="template1" style="display: none">
