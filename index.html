@@ -131,16 +131,22 @@
         background: var(--white);
       }
 
+      .button-container {
+        text-align: center;
+        align-self: center;
+        grid-area: 1 / 3 / 6 / 4;
+      }
       #previewButton {
-        background: var(--dark);
+        background: rgb(27 41 51 / 76%);
         width: fit-content;
+        padding: 0.9em;
         color: var(--white);
         font-family: var(--font);
         font-size: 15px;
+        letter-spacing: 0.5px;
         border-radius: var(--round);
-        cursor: pointer; /* Add a pointer cursor for better UX */
+        cursor: pointer;
       }
-
       #previewButton:hover {
         background: var(--accent-color);
         transition: ease 0.4s;
