@@ -108,6 +108,39 @@
         transform: rotateX(180deg);
       }
 
+      .tooltip {
+        height: fit-content;
+        position: relative;
+        cursor: auto;
+      }
+
+      .tooltip p {
+        border: 2px solid var(--accent-color);
+        border-radius: var(--round);
+        background: var(--accent-color);
+        color: var(--white);
+        font-family: var(--font);
+        font-size: 12px;
+        letter-spacing: 1px;
+        position: absolute;
+        display: inline-block;
+        padding: 10px 20px;
+        bottom: -.5em;
+        right: -0.2em;
+        z-index: 1;
+      }
+
+      .tooltip p::after {
+        content: " ";
+        position: absolute;
+        top: 100%; /* At the bottom of the tooltip */
+        left: 50%;
+        margin-left: -5px;
+        border-width: 8px;
+        border-style: solid;
+        border-color: var(--accent-color) transparent transparent transparent;
+      }
+
       /* --- Code Snippet */
       .code_editor {
         flex: 0.9;
@@ -199,6 +232,7 @@
             <span id="button-label" hidden>Copy to Clipboard</span>
             <img src="./assets/copy.png" width="35" alt="copy" />
           </button>
+          <div class="tooltip"><p>Copied</p></div>
         </div>
 
         <div class="button-container">
@@ -212,6 +246,7 @@
           <iframe id="previewTemplate" title="Template Live Preview"> </iframe>
         </div>
 
+        <!-- #NOTE: EMAIL TEMPLATES FOUND HERE -->
         <div class="template" id="template1" style="display: none">
           <h1>hello world</h1>
         </div>
