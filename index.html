@@ -141,6 +141,10 @@
         border-color: var(--accent-color) transparent transparent transparent;
       }
 
+      .hide {
+        display: none;
+      }
+
       /* --- Code Snippet */
       .code_editor {
         flex: 0.9;
@@ -226,13 +230,13 @@
             <iframe id="previewCode" title="Code Snippet"> </iframe>
           </div>
           <button
-            class="icon-container"
+            class="icon-container hide"
             id="clipboard"
             aria-labelledby="button-label">
             <span id="button-label" hidden>Copy to Clipboard</span>
             <img src="./assets/copy.png" width="35" alt="copy" />
           </button>
-          <div class="tooltip"><p>Copied</p></div>
+          <div class="tooltip hide"><p>Copied</p></div>
         </div>
 
         <div class="button-container">
