@@ -13,12 +13,18 @@ templateSelector.addEventListener("change", function () {
 
 const copyToClipBoard = () => {
   const codeSnippet = selectedTemplateContent;
+  navigator.clipboard
+    .writeText(codeSnippet)
+    .then(() => {
+      copyTooltip.classList.remove("hide");
 
-  // Copy the text inside the text field
-  navigator.clipboard.writeText(codeSnippet);
-
-  // Alert the copied text
-  alert("Copied the text: " + codeSnippet);
+      setTimeout(() => {
+        copyTooltip.classList.add("hide");
+      }, 1000);
+    })
+    .catch((err) => {
+      console.error("Failed to copy text: ", err);
+    });
 };
 
 copyButton.addEventListener("click", copyToClipBoard);
