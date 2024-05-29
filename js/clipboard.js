@@ -1,15 +1,27 @@
 const copyButton = document.getElementById("clipboard");
 const templateSelector = document.getElementById("templateSelector");
+const copyTooltip = document.querySelector(".tooltip");
+const codeSnippetContainer = document.getElementById("previewCode");
 
 let selectedTemplateContent = "";
 
 templateSelector.addEventListener("change", function () {
   const selectedTemplateId = templateSelector.value;
-
-  // Get selected template id's innerHTML
   selectedTemplateContent =
     document.getElementById(selectedTemplateId).innerHTML;
 });
+
+codeSnippetContainer.onload = function () {
+  let iframeDocument =
+    codeSnippetContainer.contentDocument ||
+    codeSnippetContainer.contentWindow.document;
+
+  if (iframeDocument.body.innerHTML.trim() !== "") {
+    copyButton.classList.remove("hide");
+  } else {
+    copyButton.classList.add("hide");
+  }
+};
 
 const copyToClipBoard = () => {
   const codeSnippet = selectedTemplateContent;
