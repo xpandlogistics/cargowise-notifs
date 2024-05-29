@@ -3,11 +3,26 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Lato:ital,wght@1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" />
+    <title>CargoWise Email Preview</title>
     <style>
       /* --- Global Styles */
+      :root {
+        --white: rgb(255, 255, 255);
+        --primary-color: rgb(246, 248, 249);
+        --secondary-color: rgba(224, 232, 235, 255);
+        --accent-color: rgba(27, 41, 51, 255);
+        --round: 3px;
+        --font: "Inter", sans-serif;
+      }
+
       *,
       *::before,
       *::after {
@@ -22,6 +37,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        background: var(--primary-color);
       }
 
       /* Layout */
@@ -36,54 +52,108 @@
       .selector-container {
         width: fit-content;
         align-self: flex-start;
+        background: var(--white);
+      }
+
+      select {
+        border: 2px solid var(--secondary-color);
+        border-bottom: transparent;
+        font-size: 16px;
+        padding: 0.8em;
+        border-radius: var(--round);
+        font-family: var(--font);
+
+        /* CUSTOM SELECT CHEVRON */
+        background: url("data:image/svg+xml,<svg height='10px' width='10px' viewBox='0 0 16 16' fill='%23000000' xmlns='http://www.w3.org/2000/svg'><path d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/></svg>")
+          no-repeat;
+        background-position: calc(100% - 0.75rem) center;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        padding-right: 2rem;
       }
 
       .content-container {
-        border: 2px solid green;
         margin: auto;
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         grid-template-rows: repeat(5, 1fr);
-        min-width: 700px;
-        max-width: 800px;
       }
 
       /* Code Content */
       .code_editor--container {
         display: flex;
         justify-content: space-between;
-        border: 2px solid blue;
-        padding: 0.5em;
         grid-area: 1 / 1 / 6 / 3;
-      }
-      .button-container {
-        text-align: center;
-        align-self: center;
-        grid-area: 1 / 3 / 6 / 4;
+        width: 600px;
+        background: var(--white);
       }
       .icon-container {
-        /* border: 2px solid purple; */
-        background: transparent;
-        border: transparent;
+        border: none;
+        background: none;
         height: fit-content;
-        padding: 3px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        padding: 10px 0px;
+        margin: 1em 1em 0em 1em;
+        flex: 0.1;
       }
       .icon-container:hover {
-        background-color: #f4f4f4;
+        background-color: var(--primary-color);
+        border-radius: var(--round);
       }
       .icon-container img {
-        display: flex;
-        width: 30px;
-        transform: rotateY(180deg);
         transform: rotateX(180deg);
       }
 
-      /* --- Code Snippet */
-      code.hljs {
-        background: transparent;
+      .tooltip {
+        height: fit-content;
+        position: relative;
+        cursor: auto;
       }
-      .code_editor--container iframe {
-        border: transparent;
+
+      .tooltip p {
+        border: 2px solid var(--accent-color);
+        border-radius: var(--round);
+        background: var(--accent-color);
+        color: var(--white);
+        font-family: var(--font);
+        font-size: 12px;
+        letter-spacing: 1px;
+        position: absolute;
+        display: inline-block;
+        padding: 10px 20px;
+        bottom: -0.5em;
+        right: -0.2em;
+        z-index: 1;
+      }
+
+      .tooltip p::after {
+        content: " ";
+        position: absolute;
+        top: 100%; /* At the bottom of the tooltip */
+        left: 50%;
+        margin-left: -5px;
+        border-width: 8px;
+        border-style: solid;
+        border-color: var(--accent-color) transparent transparent transparent;
+      }
+
+      .hide {
+        display: none;
+      }
+
+      /* --- Code Snippet */
+      .code_editor {
+        flex: 0.9;
+      }
+
+      .code_editor--container,
+      .iframe-container {
+        border: 2px solid var(--secondary-color);
+        height: 400px;
       }
 
       /* --- iframe Content */
@@ -91,10 +161,43 @@
         grid-area: 1 / 4 / 6 / 6;
       }
       iframe {
-        /* border: 2px solid purple; */
-        height: 100%;
+        border: transparent;
         width: 100%;
+        height: 100%;
+        background: var(--white);
       }
+
+      .button-container {
+        text-align: center;
+        align-self: center;
+        grid-area: 1 / 3 / 6 / 4;
+      }
+      #previewButton {
+        background: rgb(27 41 51 / 76%);
+        width: fit-content;
+        padding: 0.9em;
+        color: var(--white);
+        font-family: var(--font);
+        font-size: 15px;
+        letter-spacing: 0.5px;
+        border-radius: var(--round);
+        cursor: pointer;
+      }
+      #previewButton:hover {
+        background: var(--accent-color);
+        transition: ease 0.4s;
+      }
+      #previewButton:focus {
+        /* Visible in the full-colour space */
+        box-shadow: 0px 0px 1px 1px var(--accent-color);
+        background: rgb(27 41 51 / 76%);
+        /* Visible in Windows high-contrast themes */
+        outline-color: transparent;
+        outline-width: 2px;
+        outline-style: dotted;
+      }
+
+      /* --- Email Template Styles */
       #template1 h1 {
         color: rgb(165, 42, 83);
         border: 2px solid red;
@@ -108,7 +211,10 @@
   <body>
     <div class="outer-container">
       <div class="selector-container">
-        <select name="templates" id="templateSelector">
+        <select
+          name="templates"
+          id="templateSelector"
+          aria-label="Choose a Template:">
           <option value="" selected="selected" hidden="hidden">
             Choose a template
           </option>
@@ -121,30 +227,43 @@
       <div class="content-container">
         <div class="code_editor--container">
           <div class="code_editor">
-            <iframe id="previewCode"> </iframe>
+            <iframe id="previewCode" title="Code Snippet"> </iframe>
           </div>
-          <button class="icon-container" id="clipboard">
-            <img src="./assets/copy.png" width="30" />
+          <button
+            class="icon-container hide"
+            id="clipboard"
+            aria-labelledby="button-label">
+            <span id="button-label" hidden>Copy to Clipboard</span>
+            <img src="./assets/copy.png" width="35" alt="copy" />
           </button>
+          <div class="tooltip hide"><p>Copied</p></div>
         </div>
 
         <div class="button-container">
-          <button id="previewButton">Live Preview</button>
+          <button class="preview-container" id="previewButton">
+            Generate
+            <img src="./assets/right-arrow.png" width="10" alt="right arrow" />
+          </button>
         </div>
 
         <div class="iframe-container">
-          <iframe id="previewTemplate"> </iframe>
+          <iframe id="previewTemplate" title="Template Live Preview"> </iframe>
         </div>
 
-        <div id="template1" style="display: none">
+        <!-- #NOTE: EMAIL TEMPLATES FOUND HERE -->
+        <div class="template" id="template1" style="display: none">
           <h1>hello world</h1>
         </div>
 
-        <div id="template2" style="display: none">
+        <div class="template" id="template2" style="display: none">
           <h1>bye world!</h1>
         </div>
 
-        <div id="template3" style="display: none">
+        <div class="template" id="template3" style="display: none">
+          <h1>blah blah blahb albalbjdjvlvjd</h1>
+          <h1>blah blah blahb albalbjdjvlvjd</h1>
+          <h1>blah blah blahb albalbjdjvlvjd</h1>
+          <h1>blah blah blahb albalbjdjvlvjd</h1>
           <h1>blah blah blahb albalbjdjvlvjd</h1>
         </div>
       </div>
