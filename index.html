@@ -49,6 +49,28 @@
         margin: 2em auto;
       }
 
+      .top-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      #resetButton {
+        background: transparent;
+        border: transparent;
+        font-family: var(--font);
+        font-size: 14px;
+        font-weight: 600;
+        color: grey;
+        margin-bottom: 1em;
+        cursor: pointer;
+      }
+
+      #resetButton span {
+        margin-left: 0.5em;
+      }
+
       .selector-container {
         width: fit-content;
         align-self: flex-start;
@@ -210,18 +232,22 @@
   </head>
   <body>
     <div class="outer-container">
-      <div class="selector-container">
-        <select
-          name="templates"
-          id="templateSelector"
-          aria-label="Choose a Template:">
-          <option value="" selected="selected" hidden="hidden">
-            Choose a template
-          </option>
-          <option value="template1">Template 1</option>
-          <option value="template2">Template 2</option>
-          <option value="template3">Template 3</option>
-        </select>
+      <div class="top-container">
+        <div class="selector-container">
+          <select
+            name="templates"
+            id="templateSelector"
+            aria-label="Choose a Template:">
+            <option value="question" selected hidden>Choose a template</option>
+            <option value="template1">Template 1</option>
+            <option value="template2">Template 2</option>
+            <option value="template3">Template 3</option>
+          </select>
+        </div>
+        <button id="resetButton">
+          <img src="./assets/reset.png" width="18" alt="" />
+          <span>Reset</span>
+        </button>
       </div>
 
       <div class="content-container">
@@ -272,6 +298,7 @@
     <script src="./js/preview.js"></script>
     <script src="./js/code.js"></script>
     <script src="./js/clipboard.js"></script>
+    <script src="./js/reset.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>
