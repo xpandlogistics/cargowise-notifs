@@ -227,6 +227,12 @@
         outline-style: dotted;
       }
 
+      #previewButton:disabled {
+        border: 1px solid #999999;
+        background-color: #cccccc;
+        cursor: not-allowed;
+      }
+
       /* --- Email Template Styles */
       #template1 h1 {
         color: rgb(165, 42, 83);
@@ -274,7 +280,7 @@
         </div>
 
         <div class="button-wrapper">
-          <button class="button-container" id="previewButton">
+          <button class="button-container" id="previewButton" disabled>
             Generate
             <img src="./assets/right-arrow.png" width="10" alt="right arrow" />
           </button>
@@ -307,6 +313,7 @@
     <script src="./js/codePreview.js"></script>
     <script src="./js/clipboard.js"></script>
     <script src="./js/reset.js"></script>
+    <script src="./js/tracker.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
     <script>
