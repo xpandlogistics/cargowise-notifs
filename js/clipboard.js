@@ -1,7 +1,7 @@
 const copyButton = document.getElementById("clipboard");
 const templateSelector = document.getElementById("templateSelector");
 const copyTooltip = document.querySelector(".tooltip");
-const codeSnippetContainer = document.getElementById("previewCode");
+const codePreview = document.getElementById("codePreview");
 
 let selectedTemplateContent = "";
 
@@ -11,10 +11,9 @@ templateSelector.addEventListener("change", function () {
     document.getElementById(selectedTemplateId).innerHTML;
 });
 
-codeSnippetContainer.onload = function () {
+codePreview.onload = function () {
   let iframeDocument =
-    codeSnippetContainer.contentDocument ||
-    codeSnippetContainer.contentWindow.document;
+    codePreview.contentDocument || codePreview.contentWindow.document;
 
   if (iframeDocument.body.innerHTML.trim() !== "") {
     copyButton.classList.remove("hide");

@@ -173,13 +173,13 @@
       }
 
       .code_editor--container,
-      .preview-container {
+      .template-container {
         border: 2px solid var(--secondary-color);
         height: 400px;
       }
 
       /* --- iframe Content */
-      .preview-container {
+      .template-container {
         grid-area: 1 / 4 / 6 / 6;
       }
 
@@ -254,7 +254,7 @@
       <div class="content-container">
         <div class="code_editor--container">
           <div class="code_editor">
-            <iframe id="previewCode" title="Code Snippet"> </iframe>
+            <iframe id="codePreview" title="Code Snippet"> </iframe>
           </div>
           <button
             class="icon-container hide"
@@ -273,8 +273,8 @@
           </button>
         </div>
 
-        <div class="preview-container">
-          <iframe id="previewTemplate" title="Template Live Preview"> </iframe>
+        <div class="template-container">
+          <iframe id="templatePreview" title="Template Live Preview"> </iframe>
         </div>
 
         <!-- #NOTE: EMAIL TEMPLATES FOUND HERE -->
@@ -296,8 +296,8 @@
       </div>
     </div>
 
-    <script src="./js/preview.js"></script>
-    <script src="./js/code.js"></script>
+    <script src="./js/templatePreview.js"></script>
+    <script src="./js/codePreview.js"></script>
     <script src="./js/clipboard.js"></script>
     <script src="./js/reset.js"></script>
 
