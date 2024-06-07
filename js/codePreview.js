@@ -1,7 +1,7 @@
 const generateCode = () => {
   const templateSelector = document.getElementById("templateSelector");
-  const previewCode = document.getElementById("previewCode");
-  const previewTemplate = document.getElementById("previewTemplate");
+  const codePreview = document.getElementById("codePreview");
+  const templatePreview = document.getElementById("templatePreview");
 
   const escapeHTML = (unsafe) => {
     return unsafe
@@ -39,8 +39,8 @@ const generateCode = () => {
       </html>
     `;
 
-    previewCode.srcdoc = content;
-    previewTemplate.srcdoc = "";
+    codePreview.srcdoc = content;
+    templatePreview.srcdoc = "";
   };
 
   templateSelector.addEventListener("change", function () {
